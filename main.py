@@ -1,6 +1,7 @@
+import csv
 import cv2
 import numpy as np
-import csv
+from colorama import Fore, Style
 
 
 def write_rgb_csv(_image, filename):
@@ -12,51 +13,64 @@ def write_rgb_csv(_image, filename):
     cv2.destroyAllWindows()
 
 
-def write_gray_csv(_height, _width, _image, filename):
-    gray_img = np.zeros((_height, _width))
-    for i in range(0, _height):
-        for j in range(0, _width):
-            gray_img[i][j] = (_image[i][j][0] * 0.33 + _image[i][j][1] * 0.33 + _image[i][j][2] * 0.33) / 255
-
+def write_gray_csv( _image, filename):
     with open(filename, mode="w") as csv_file:
         _csv = csv.writer(csv_file)
-        _csv.writerows(gray_img)
-    cv2.imshow("GRAY", gray_img)
+        _csv.writerows(_image)
+    cv2.imshow("GRAY", _image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
 
-def write_intensity_csv():
+def write_intensity_csv(_image , filename):
     intensity = int(input('Intensity : '))
+    if not 0 < intensity < 256:
+        write_intensity_csv(_image, filename)
 
 
-def write_clear_csv():
-    return
+def write_copy_csv(_image, filename):
+    copy = _image.copy()
+    with open(filename, mode="w") as csv_file:
+        _csv = csv.writer(csv_file)
+        _csv.writerows(copy)
+    cv2.imshow("COPY", copy)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
-def write_copy_csv():
-    return
+def img_to_gray(_image ):
+    _height, _width, _ = _image.shape
+    gray_img = np.zeros((_height, _width))
+    for i in range(0, _height):
+        for j in range(0, _width):
+            gray_img[i][j] = (_image[i][j][0] * 0.33 + _image[i][j][1] * 0.33 + _image[i][j][2] * 0.33) / 255
+    return gray_img
 
 
 def main(file_name):
-    print('1 - RGB matrix of image')
+    print(Fore.GREEN + '1 - RGB matrix of image')
     print('2 - Gray matrix of image')
     print('3 - Change intensity of a pixel')
     print('4 - Copy of image')
-    print('5 - Negative of an image')
+    print(Fore.RED + '5 - Negative of an image')
     print('6 - Increment/decrement of brightness')
     print('7 - Contrast elongation/reduction')
     print('8 - Shifting H/V/D')
-    print('9 - Quit')
+    print(Fore.GREEN + '9 - Quit' + Style.RESET_ALL)
     choice = int(input('Select an option : '))
 
     if choice == 1:
         write_rgb_csv(image, f"{file_name}_RGB.csv")
         main(file_name)
     elif choice == 2:
-        write_gray_csv(height, width, image, f"{file_name}_GRAY.csv")
+        write_gray_csv(img_to_gray(image), f"{file_name}_GRAY.csv")
         main(file_name)
-
+    elif choice == 3:
+        write_intensity_csv(img_to_gray(image) ,f"{file_name}_INTENSITY.csv")
+        main(file_name)
+    elif choice == 4:
+        write_copy_csv(img_to_gray(image), f"{file_name}_COPY.csv")
+        main(file_name)
 
 if __name__ == '__main__':
     image = cv2.imread('./images/testimage2.png')
