@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\B_Mario_RGB.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\G_Mario_RGB.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Mario_COPY.csv">
           <value>
             <Attribute>
@@ -10,21 +24,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\gray_image.csv">
+        <entry key="\Mario_GRAY.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\image.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\rgb_image.csv">
+        <entry key="\R_Mario_RGB.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

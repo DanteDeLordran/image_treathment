@@ -5,10 +5,17 @@ from colorama import Fore, Style
 
 
 def write_rgb_csv(_image, filename):
-    with open(filename, mode="w") as csv_file:
-        _csv = csv.writer(csv_file)
-        _csv.writerows(_image)
-    cv2.imshow("RGB", _image)
+    _height, _width, _ = _image.shape
+    _channels = ['R', 'G', 'B']
+
+    for i, channel in enumerate(_channels):
+        channel_img = _image[:, :, i]
+
+        with open(f"{channel}_{filename}", mode="w") as csv_file:
+            _csv = csv.writer(csv_file)
+            _csv.writerows(channel_img)
+
+        cv2.imshow(f"{channel}", channel_img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
