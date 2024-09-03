@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e630f990-2612-43ee-9dbc-a14b7c1f35ca" name="Changes" comment="Refactored rgb csv method">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+    <list default="true" id="e630f990-2612-43ee-9dbc-a14b7c1f35ca" name="Changes" comment="Copy and intensity methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -107,13 +106,22 @@
       <option name="project" value="LOCAL" />
       <updated>1725236416261</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Copy and intensity methods">
+      <option name="closed" value="true" />
+      <created>1725322937768</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725322937768</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Methods for saving csv of the RGB and GRAY image matrix" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Refactored rgb csv method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored rgb csv method" />
+    <MESSAGE value="Copy and intensity methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copy and intensity methods" />
   </component>
 </project>

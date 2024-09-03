@@ -59,6 +59,17 @@ def write_copy_csv(_image, filename):
     cv2.destroyAllWindows()
 
 
+def write_negative_csv(_image, filename):
+    copy = _image.copy()
+    copy = 1 - copy
+    with open(filename, mode="w") as csv_file:
+        _csv = csv.writer(csv_file)
+        _csv.writerows(copy)
+    cv2.imshow("NEGATIVE", copy)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 def img_to_gray(_image ):
     _height, _width, _ = _image.shape
     gray_img = np.zeros((_height, _width))
@@ -73,8 +84,8 @@ def main(file_name):
     print('2 - Gray matrix of image')
     print('3 - Change intensity of a pixel')
     print('4 - Copy of image')
-    print(Fore.RED + '5 - Negative of an image')
-    print('6 - Increment/decrement of brightness')
+    print('5 - Negative of an image')
+    print(Fore.RED + '6 - Increment/decrement of brightness')
     print('7 - Contrast elongation/reduction')
     print('8 - Shifting H/V/D')
     print(Fore.GREEN + '9 - Quit' + Style.RESET_ALL)
@@ -91,6 +102,9 @@ def main(file_name):
         main(file_name)
     elif choice == 4:
         write_copy_csv(img_to_gray(image), f"{file_name}_COPY.csv")
+        main(file_name)
+    elif choice == 5:
+        write_negative_csv(img_to_gray(image), f'{file_name}_NEGATIVE.csv')
         main(file_name)
 
 if __name__ == '__main__':
