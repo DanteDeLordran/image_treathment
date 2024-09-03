@@ -17,14 +17,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Mario_COPY.csv">
+        <entry key="\Mario_GRAY.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\Mario_GRAY.csv">
+        <entry key="\Mario_INTENSITY.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

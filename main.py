@@ -30,9 +30,22 @@ def write_gray_csv( _image, filename):
 
 
 def write_intensity_csv(_image , filename):
+    img_height, img_width = _image.shape
     intensity = int(input('Intensity : '))
-    if not 0 < intensity < 256:
+    if not -1 < intensity < 256:
         write_intensity_csv(_image, filename)
+    _height = int(input('Height :'))
+    _width = int(input('Width :'))
+    if not -1 < _height < img_height and -1 < _width < img_width:
+        write_intensity_csv(_image, filename)
+    copy_img = _image.copy()
+    copy_img[_height][_width] = intensity/255
+    with open(filename, mode="w") as csv_file:
+        _csv = csv.writer(csv_file)
+        _csv.writerows(copy_img)
+    cv2.imshow("INTENSITY", copy_img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 def write_copy_csv(_image, filename):
@@ -40,6 +53,7 @@ def write_copy_csv(_image, filename):
     with open(filename, mode="w") as csv_file:
         _csv = csv.writer(csv_file)
         _csv.writerows(copy)
+    cv2.imshow("ORIGINAL", _image)
     cv2.imshow("COPY", copy)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
