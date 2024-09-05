@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e630f990-2612-43ee-9dbc-a14b7c1f35ca" name="Changes" comment="Copy and intensity methods">
+    <list default="true" id="e630f990-2612-43ee-9dbc-a14b7c1f35ca" name="Changes" comment="Negative method">
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -61,7 +62,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-abccbe9d933a-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.20224.428" />
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
       </set>
     </attachedChunks>
   </component>
@@ -114,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725322937768</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Negative method">
+      <option name="closed" value="true" />
+      <created>1725327399931</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725327399931</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -122,6 +131,7 @@
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Refactored rgb csv method" />
     <MESSAGE value="Copy and intensity methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Copy and intensity methods" />
+    <MESSAGE value="Negative method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Negative method" />
   </component>
 </project>

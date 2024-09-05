@@ -70,6 +70,28 @@ def write_negative_csv(_image, filename):
     cv2.destroyAllWindows()
 
 
+def write_increment_decrement_csv(_image , filename):
+    copy = _image.copy()
+    _height, _width = copy.shape
+    increment = int(input('Increment/decrement : '))
+    increment = increment/255
+    for i in range(0,_height):
+        for j in range(0,_width):
+            if -1 < copy[i][j] + increment < 1.1:
+                copy[i][j] = copy[i][j] + increment
+            elif 0 > copy[i][j] + increment:
+                copy[i][j] = 1 - increment
+            elif 1 < copy[i][j] + increment:
+                copy[i][j] = 0 + increment
+    with open(filename, mode="w") as csv_file:
+        _csv = csv.writer(csv_file)
+        _csv.writerows(copy)
+    cv2.imshow("ORIGINAL", _image)
+    cv2.imshow("INCREMENT/DECREMENT", copy)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 def img_to_gray(_image ):
     _height, _width, _ = _image.shape
     gray_img = np.zeros((_height, _width))
@@ -85,8 +107,8 @@ def main(file_name):
     print('3 - Change intensity of a pixel')
     print('4 - Copy of image')
     print('5 - Negative of an image')
-    print(Fore.RED + '6 - Increment/decrement of brightness')
-    print('7 - Contrast elongation/reduction')
+    print('6 - Increment/decrement of brightness')
+    print(Fore.RED + '7 - Contrast elongation/reduction')
     print('8 - Shifting H/V/D')
     print(Fore.GREEN + '9 - Quit' + Style.RESET_ALL)
     choice = int(input('Select an option : '))
@@ -105,6 +127,9 @@ def main(file_name):
         main(file_name)
     elif choice == 5:
         write_negative_csv(img_to_gray(image), f'{file_name}_NEGATIVE.csv')
+        main(file_name)
+    elif choice == 6:
+        write_increment_decrement_csv(img_to_gray(image) , f'{file_name}_INCREMENT_DECREMENT.csv')
         main(file_name)
 
 if __name__ == '__main__':
