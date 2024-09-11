@@ -71,23 +71,41 @@ def write_negative_csv(_image, filename):
 
 
 def write_increment_decrement_csv(_image , filename):
-    copy = _image.copy()
+    copy = np.array(_image.copy())
     _height, _width = copy.shape
     increment = int(input('Increment/decrement : '))
     increment = increment/255
+
+    temp_img = np.zeros((_height, _width))
+    is_negative = False
+    is_overgrown  = False
+
     for i in range(0,_height):
-        for j in range(0,_width):
-            if -1 < copy[i][j] + increment < 1.1:
-                copy[i][j] = copy[i][j] + increment
-            elif 0 > copy[i][j] + increment:
-                copy[i][j] = 1 - increment
-            elif 1 < copy[i][j] + increment:
-                copy[i][j] = 0 + increment
+        for j in range(0, _width):
+            temp_img[i][j] = copy[i][j] + increment
+            if temp_img[i][j] > 1:
+                is_overgrown = True
+            elif temp_img[i][j] < 0:
+                is_negative = True
+
+    if is_negative:
+        minimum = temp_img.min()
+        absolute = np.absolute(minimum)
+        for i in range(0,_height):
+            for j in range(0, _width):
+                temp_img[i][j] = temp_img[i][j] + absolute
+
+    if is_overgrown:
+        maximum = temp_img.max()
+        for i in range(0,_height):
+            for j in range(0, _width):
+                temp_img[i][j] = temp_img[i][j] / np.absolute(maximum) * 1
+
     with open(filename, mode="w") as csv_file:
         _csv = csv.writer(csv_file)
-        _csv.writerows(copy)
+        _csv.writerows(temp_img)
     cv2.imshow("ORIGINAL", _image)
-    cv2.imshow("INCREMENT/DECREMENT", copy)
+    cv2.imshow("INCREMENT/DECREMENT", temp_img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
@@ -133,7 +151,7 @@ def main(file_name):
         main(file_name)
 
 if __name__ == '__main__':
-    image = cv2.imread('./images/testimage2.png')
+    image = cv2.imread('images/testimage2.png')
     height, width, channels = image.shape
 
     print(f'Height {height} , Width {width}')
